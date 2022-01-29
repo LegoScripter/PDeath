@@ -188,15 +188,6 @@ char.HumanoidRootPart.Position=reanim.Torso.Position
 end
 end))
 
-local Highlight = Instance.new("SelectionBox")
-Highlight.Adornee = char.HumanoidRootPart
-Highlight.LineThickness=0.05
-Highlight.Color3 = Color3.fromRGB(30,255,30)
-Highlight.Parent = char.HumanoidRootPart
-Highlight.Name = "RAINBOW"
-
-hrp = Highlight
-
 
 
 te(ct,m.Button1Down:Connect(function()
