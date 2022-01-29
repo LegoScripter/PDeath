@@ -184,7 +184,7 @@ bp.Position=m.Hit.p
 char.HumanoidRootPart.Position=m.Hit.p
 else
 bp.Position=reanim.Torso.Position
-char.HumanoidRootPart.Position=reanim.Torso.Position
+char.HumanoidRootPart.Position=reanim["Red Eternal Slayer"].Handle.Position
 end
 end))
 
