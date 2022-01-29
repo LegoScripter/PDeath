@@ -204,7 +204,7 @@ te(ct,m.Button1Down:Connect(function()
      else
          click = true
      end
-     wait(2)
+     wait(1.6)
      click = false
 end))
 
