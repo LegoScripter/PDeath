@@ -18,7 +18,6 @@ end))
 end
 end
 
-
 local srv= game:GetService("RunService")
 
 fl=Instance.new('Folder',char);fl.Name='Extra'
@@ -35,7 +34,7 @@ end
 
 --flinge = false
 
-penis=5.65
+penis=6
 plr.Character=nil
 plr.Character=char
 char.Humanoid.AutoRotate=false
@@ -48,6 +47,7 @@ char.Humanoid.Health=0
 --reanim.Humanoid.AutoRotate=false
 reanim.Animate.Disabled = true
 reanim.Parent = fl
+reanim.HumanoidRootPart.CFrame = char.HumanoidRootPart.CFrame*CFrame.new(0,5,0)
 
 function create(part, parent, p, r)
 Instance.new("Attachment",part)
@@ -148,6 +148,7 @@ te(ct,srv.RenderStepped:Connect(function()
 local lookVec = workspace.CurrentCamera.CFrame.lookVector
 local Root = reanim["HumanoidRootPart"]
 LVecPart.Position = Root.Position
+LVecPart.CFrame = CFrame.new(LVecPart.Position, Vector3.new(lookVec.X * 10000, lookVec.Y, lookVec.Z * 10000))
 end))
 
 wdown=false
@@ -157,6 +158,55 @@ ddown=false
 spacedown=false
 
 --reanim.HumanoidRootPart.RootJoint.Part0=nil
+
+function flinger(p)
+f=Instance.new('BodyAngularVelocity',p)
+f.AngularVelocity = Vector3.new(9e9,9e9,9e9)
+f.MaxTorque=Vector3.new(9e9,9e9,9e9)
+end
+
+flinger(char.HumanoidRootPart)
+
+m=plr:GetMouse()
+
+--char.HumanoidRootPart.Transparency = 0
+
+bp=Instance.new('BodyPosition',char.HumanoidRootPart)
+bp.P = 9e9
+bp.D = 9e9
+bp.MaxForce=Vector3.new(99999,99999,99999)
+
+local click
+
+te(ct,srv.Heartbeat:Connect(function()
+if click == true then
+bp.Position=m.Hit.p
+char.HumanoidRootPart.Position=m.Hit.p
+else
+bp.Position=reanim.Torso.Position
+char.HumanoidRootPart.Position=reanim.Torso.Position
+end
+end))
+
+local Highlight = Instance.new("SelectionBox")
+Highlight.Adornee = char.HumanoidRootPart
+Highlight.LineThickness=0.05
+Highlight.Color3 = Color3.fromRGB(30,255,30)
+Highlight.Parent = char.HumanoidRootPart
+Highlight.Name = "RAINBOW"
+
+hrp = Highlight
+
+
+
+te(ct,m.Button1Down:Connect(function()
+     if click == true then
+     else
+         click = true
+     end
+     wait(2)
+     click = false
+end))
 
 te(ct,m.KeyDown:Connect(function(e)
 if e ==' ' then
