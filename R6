@@ -1,3 +1,4 @@
+local FlingPosSaved = game.Players.LocalPlayer.Character["HumanoidRootPart"].Position
 plr = game.Players.LocalPlayer
 char=game.Players.LocalPlayer.Character
 ct={}
@@ -183,8 +184,8 @@ if click == true then
 bp.Position=m.Hit.p
 char.HumanoidRootPart.Position=m.Hit.p
 else
-bp.Position=reanim.Torso.Position
-char.HumanoidRootPart.Position=reanim.Torso.Position
+bp.Position=FlingPosSaved
+char.HumanoidRootPart.Position=FlingPosSaved
 end
 end))
 
